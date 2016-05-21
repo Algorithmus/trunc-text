@@ -2,7 +2,12 @@
 
 var delimiter = '…';
 
-function truncText (input, cap) {
+function truncText (input, cap, options) {
+  var o = options || {};
+  delimiter = o.delimiter || delimiter;
+  if (o.hasOwnProperty('showDelimiter') && !o.showDelimiter) {
+    delimiter = "";
+  }
   var limit = Number(cap);
   if (isNaN((limit))) {
     return delimiter;
